@@ -1,0 +1,19 @@
+{
+  "name": "Amrellah T.",
+  "title": "Plant Manager",
+  "company": "Twingulf Industries",
+  "phones": [
+    "+253 77 481 141",
+    "+251 923 139 300"
+  ],
+  "emails": [
+    "amrallah.tawfik@twin-gulf.com",
+    "amirtewfik1516@gmail.com"
+  ],
+  "website": "https://www.twin-gulf.com",
+  "location": {
+    "label": "Twingulf Industries, Djibouti City",
+    "geo": "11.572076,43.145645",
+    "maps_url": "https://www.google.com/maps?q=11.572076,43.145645"
+  }
+}
