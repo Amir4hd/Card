@@ -33,7 +33,7 @@ body{
   font-family:'Outfit',sans-serif;
   min-height:100vh;
   display:flex; align-items:flex-start; justify-content:center;
-  padding:0 0 60px;
+  padding:0 0 100px;
   overflow-x:hidden;
 }
 
@@ -73,7 +73,7 @@ body::before{
    HERO
 ══════════════════ */
 .hero{
-  padding:60px 28px 40px;
+  padding:40px 28px 22px;
   position:relative; overflow:hidden;
   border-bottom:1px solid var(--dim);
 }
@@ -110,7 +110,7 @@ body::before{
 
 .hero-name{
   font-family:'Happiness','Outfit',sans-serif;
-  font-size:42px; font-weight:normal;
+  font-size:28px; font-weight:normal;
   color:var(--white); line-height:1.05;
   letter-spacing:0.5px;
 }
@@ -119,7 +119,7 @@ body::before{
   width:40px; height:1px;
   background:var(--cyan);
   box-shadow:0 0 8px rgba(0,229,255,0.6);
-  margin:18px 0 14px;
+  margin:12px 0 10px;
 }
 
 .hero-role{
@@ -363,20 +363,21 @@ body::before{
 /* ══════════════════
    SAVE BUTTON
 ══════════════════ */
-.save-wrap{padding:0 20px;}
+.save-wrap{display:none;}
 
 .save-btn{
-  width:100%; padding:17px 28px;
+  display:flex; align-items:center; justify-content:center;
   background:var(--cyan);
-  border:none; border-radius:16px;
+  border:none; border-radius:50%;
   color:var(--bg);
-  font-family:'Outfit',sans-serif;
-  font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
   cursor:pointer; text-decoration:none;
-  display:flex; align-items:center; justify-content:center; gap:12px;
-  position:relative; overflow:hidden;
+  position:fixed;
+  bottom:24px; right:24px;
+  width:58px; height:58px;
+  z-index:999;
   transition:all 0.22s cubic-bezier(0.16,1,0.3,1);
-  box-shadow:0 0 0 1px rgba(0,229,255,0.3), 0 8px 32px rgba(0,229,255,0.2), 0 20px 48px rgba(0,0,0,0.4);
+  box-shadow:0 0 0 1px rgba(0,229,255,0.4), 0 8px 32px rgba(0,229,255,0.3), 0 4px 16px rgba(0,0,0,0.5);
+  overflow:hidden;
 }
 
 /* shine */
@@ -392,18 +393,29 @@ body::before{
 .save-btn:active{transform:scale(0.97);}
 @media(hover:hover){
   .save-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 0 0 1px rgba(0,229,255,0.5), 0 12px 40px rgba(0,229,255,0.35), 0 24px 56px rgba(0,0,0,0.4);
+    transform:scale(1.1);
+    box-shadow:0 0 0 1px rgba(0,229,255,0.6), 0 12px 40px rgba(0,229,255,0.4), 0 4px 16px rgba(0,0,0,0.5);
     background:var(--white);
   }
 }
+/* pulse ring around fixed button */
+.save-btn::after{
+  content:''; position:absolute; inset:-4px;
+  border-radius:50%; border:1px solid rgba(0,229,255,0.3);
+  animation:ring 2.5s ease-out infinite;
+  pointer-events:none;
+}
+@keyframes ring{
+  0%  {transform:scale(1); opacity:0.6;}
+  100%{transform:scale(1.5); opacity:0;}
+}
 
 .save-btn svg{
-  width:17px; height:17px; stroke:var(--bg);
+  width:24px; height:24px; stroke:var(--bg);
   fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;
   position:relative; z-index:1;
 }
-.save-btn-txt{position:relative; z-index:1;}
+.save-btn-txt{display:none;}
 
 /* footer */
 .footer{
@@ -424,6 +436,67 @@ body::before{
 }
 @keyframes sp{to{transform:rotate(360deg);}}
 .spin-txt{font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(0,229,255,0.3);}
+
+/* ── FIXED SAVE BUTTON ── */
+.save-fixed {
+  position: fixed;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%; max-width: 440px;
+  padding: 12px 20px 20px;
+  background: linear-gradient(to top, rgba(3,8,16,1) 60%, rgba(3,8,16,0) 100%);
+  z-index: 100;
+  display: flex; justify-content: center;
+}
+
+.save-fixed-btn {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--cyan);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  position: relative; overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0,229,255,0.3),
+    0 8px 32px rgba(0,229,255,0.3),
+    0 16px 48px rgba(0,0,0,0.5);
+  transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
+  animation: saveFloat 3s ease-in-out infinite;
+}
+
+@keyframes saveFloat {
+  0%,100% { box-shadow: 0 0 0 1px rgba(0,229,255,0.3), 0 8px 32px rgba(0,229,255,0.3), 0 16px 48px rgba(0,0,0,0.5); }
+  50%      { box-shadow: 0 0 0 4px rgba(0,229,255,0.1), 0 12px 40px rgba(0,229,255,0.45), 0 20px 56px rgba(0,0,0,0.5); }
+}
+
+.save-fixed-btn:active { transform: scale(0.92); }
+@media(hover:hover){ .save-fixed-btn:hover { transform: scale(1.08); background: var(--white); } }
+
+.save-fixed-btn svg {
+  width: 20px; height: 20px; stroke: var(--bg);
+  fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+  position: relative; z-index: 1;
+}
+
+.save-fixed-tooltip {
+  position: absolute;
+  bottom: 100%; left: 50%; transform: translateX(-50%);
+  background: rgba(0,229,255,0.12);
+  border: 1px solid rgba(0,229,255,0.2);
+  color: var(--cyan);
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 10px; border-radius: 6px;
+  white-space: nowrap; margin-bottom: 8px;
+  opacity: 0; transition: opacity 0.2s;
+  pointer-events: none;
+}
+.save-fixed-btn:hover .save-fixed-tooltip { opacity: 1; }
+
+/* push page content up so it doesnt hide behind fixed button */
+.page { padding-bottom: 90px !important; }
+
 </style>
 </head>
 <body>
@@ -560,7 +633,7 @@ async function init(){
     </div>
 
     <div class="save-wrap">
-      <a class="save-btn" id="saveBtn" href="#">
+      <a class="save-btn" id="saveBtn" href="#" title="Save Contact to Phone">
         <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span class="save-btn-txt">Save Contact to Phone</span>
       </a>
@@ -570,12 +643,23 @@ async function init(){
   `;
 
   document.title=`${c.name} — ${c.company}`;
-  document.getElementById('saveBtn').addEventListener('click',function(e){
+
+  // inject fixed save button
+  const fixedBtn = document.createElement('div');
+  fixedBtn.className = 'save-fixed';
+  fixedBtn.innerHTML = `
+    <a class="save-fixed-btn" id="saveBtn" href="#">
+      <div class="save-fixed-tooltip">Save Contact</div>
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </a>
+  `;
+  document.body.appendChild(fixedBtn);
+  document.addEventListener('click',function(e){ const btn=e.target.closest('#saveBtn'); if(!btn) return;
     e.preventDefault();
     const blob=new Blob([vcf],{type:'text/vcard'});
     const url=URL.createObjectURL(blob);
     const a=document.createElement('a');
-    a.href=url; a.download='amrellah_tawfik.vcf'; a.click();
+    a.href=url; a.download='Amrellah_T.vcf'; a.click();
     URL.revokeObjectURL(url);
   });
 }
