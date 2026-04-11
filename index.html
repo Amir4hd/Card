@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Amrellah T. | Digital Business Card</title>
-  <!-- Google Fonts & simple reset -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (free icons) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -16,562 +14,476 @@
     }
 
     body {
-      background: linear-gradient(145deg, #e0eafc 0%, #cfdef3 100%);
+      background: #eef2f7;
       font-family: 'Inter', sans-serif;
-      padding: 24px 16px;
+      padding: 20px 16px;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* main card container */
-    .card-container {
-      max-width: 560px;
+    .card-wrapper {
+      max-width: 480px;
       width: 100%;
       margin: 0 auto;
       position: relative;
-      border-radius: 48px 48px 40px 40px;
-      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.35);
     }
 
-    /* scrollable content area (everything except fixed footer) */
-    .card-scrollable {
-      background: #ffffff;
-      border-radius: 48px 48px 32px 32px;
+    /* scrollable content */
+    .card-scroll {
+      background: white;
+      border-radius: 36px;
       overflow-y: auto;
-      max-height: 80vh;
+      max-height: 78vh;
       scroll-behavior: smooth;
-      padding-bottom: 24px;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
     }
 
-    /* custom scroll */
-    .card-scrollable::-webkit-scrollbar {
-      width: 5px;
+    .card-scroll::-webkit-scrollbar {
+      width: 4px;
     }
-    .card-scrollable::-webkit-scrollbar-track {
-      background: #f0f0f0;
+    .card-scroll::-webkit-scrollbar-track {
+      background: #e9ecef;
       border-radius: 10px;
     }
-    .card-scrollable::-webkit-scrollbar-thumb {
-      background: #bc9a6c;
+    .card-scroll::-webkit-scrollbar-thumb {
+      background: #c0a06b;
       border-radius: 10px;
     }
 
-    /* inner spacing */
-    .card-inner {
-      padding: 32px 28px 20px 28px;
+    .card-content {
+      padding: 28px 24px 20px 24px;
     }
 
-    /* profile header */
-    .profile-badge {
+    /* header area - cleaner */
+    .name-row {
+      margin-bottom: 24px;
+      border-bottom: 1px solid #f0f2f5;
+      padding-bottom: 20px;
+    }
+    .name-row h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: #1a2c3e;
+      margin-bottom: 6px;
+    }
+    .title-badge {
+      display: inline-block;
+      background: #f5ede2;
+      color: #b8925c;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 4px 14px;
+      border-radius: 30px;
+      margin-top: 6px;
+    }
+    .company-text {
+      color: #5f6c80;
+      font-size: 14px;
+      margin-top: 10px;
       display: flex;
       align-items: center;
-      gap: 18px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
+      gap: 8px;
     }
-    .avatar-icon {
-      background: linear-gradient(135deg, #2c3e50, #1a2a3a);
-      width: 80px;
-      height: 80px;
-      border-radius: 32px;
+    .company-text i {
+      color: #b8925c;
+      font-size: 13px;
+    }
+
+    /* section headers - minimal */
+    .section-header {
+      font-size: 15px;
+      font-weight: 600;
+      color: #3a4a62;
+      margin: 24px 0 14px 0;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-header i {
+      color: #b8925c;
+      font-size: 14px;
+    }
+
+    /* button row - clean */
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .action-btn {
+      flex: 1;
+      background: #f8f9fc;
+      border-radius: 50px;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 12px 18px -8px rgba(0,0,0,0.2);
-    }
-    .avatar-icon i {
-      font-size: 48px;
-      color: #f5e7d3;
-    }
-    .name-title h1 {
-      font-size: 1.85rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: #1e2a36;
-    }
-    .name-title .role {
-      font-weight: 600;
-      color: #bc9a6c;
-      background: #fef5e8;
-      display: inline-block;
-      padding: 4px 14px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      margin-top: 8px;
-    }
-    .company {
-      color: #4a5b6e;
-      font-weight: 500;
-      margin-top: 6px;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* section titles */
-    .section-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #1e2a36;
-      margin: 28px 0 16px 0;
-      display: flex;
-      align-items: center;
       gap: 10px;
-      border-left: 4px solid #bc9a6c;
-      padding-left: 14px;
-    }
-    .section-title i {
-      color: #bc9a6c;
-      font-size: 1.2rem;
-    }
-
-    /* button rows */
-    .social-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 12px;
-    }
-    .btn-icon {
-      flex: 1;
-      min-width: 150px;
-      background: #f8fafc;
-      border-radius: 60px;
-      padding: 14px 12px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      transition: all 0.2s ease;
-      border: 1px solid #e9edf2;
       text-decoration: none;
-      color: #1f2a3e;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 500;
+      color: #2c3e50;
+      border: 1px solid #eef2f8;
+      transition: all 0.2s ease;
     }
-    .btn-icon i {
-      font-size: 1.7rem;
-      width: 32px;
-      text-align: center;
+    .action-btn i {
+      font-size: 18px;
     }
-    .btn-icon span {
-      font-size: 0.95rem;
-    }
-    .btn-icon:hover {
-      background: #ffffff;
-      border-color: #bc9a6c;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 18px -8px rgba(0,0,0,0.1);
+    .action-btn:hover {
+      background: white;
+      border-color: #c0a06b;
+      transform: translateY(-2px);
     }
 
-    /* whatsapp / telegram specific colors on hover */
-    .btn-wa:hover i { color: #25D366; }
-    .btn-tg:hover i { color: #26A5E4; }
-    .btn-location:hover i { color: #ea4335; }
-
-    /* contact grid (phone, email, website) */
-    .contact-grid {
+    /* contact cards - airy */
+    .contact-block {
+      background: #fafbfd;
+      border-radius: 24px;
+      padding: 16px 18px;
+      margin: 12px 0 8px;
+    }
+    .contact-line {
       display: flex;
-      flex-direction: column;
+      align-items: flex-start;
       gap: 14px;
-      background: #f9f9fc;
-      padding: 18px 20px;
-      border-radius: 32px;
-      margin: 8px 0 4px 0;
+      margin-bottom: 16px;
     }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+    .contact-line:last-child {
+      margin-bottom: 0;
     }
     .contact-icon {
-      width: 42px;
-      color: #bc9a6c;
-      font-size: 1.4rem;
+      width: 32px;
+      color: #b8925c;
+      font-size: 16px;
       text-align: center;
+      margin-top: 2px;
     }
-    .contact-details {
+    .contact-info {
       flex: 1;
     }
-    .contact-details a {
+    .contact-info a {
       text-decoration: none;
-      color: #1e2a36;
+      color: #2c3e50;
+      font-size: 14px;
       font-weight: 500;
-      transition: color 0.2s;
       display: inline-block;
       margin-right: 12px;
+      margin-bottom: 4px;
     }
-    .contact-details a:hover {
-      color: #bc9a6c;
+    .contact-info a:hover {
+      color: #b8925c;
     }
-    .small-label {
-      font-size: 0.7rem;
-      color: #7f8c8d;
-      letter-spacing: 0.3px;
+    .contact-label {
+      font-size: 11px;
+      color: #8a99b0;
+      letter-spacing: 0.2px;
+    }
+    .small-note {
+      font-size: 12px;
+      color: #6c7a91;
+      margin-top: 4px;
     }
 
-    /* location link */
-    .map-link {
-      background: #f1f5f9;
-      border-radius: 28px;
-      padding: 12px 18px;
+    /* location chip */
+    .location-chip {
+      background: #f4f6fa;
+      border-radius: 40px;
+      padding: 10px 18px;
       display: inline-flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: #1e466e;
+      color: #2c5a7a;
+      font-size: 13px;
       font-weight: 500;
-      margin-top: 10px;
-      width: 100%;
-      transition: all 0.2s;
+      margin-top: 8px;
+      width: auto;
+      transition: 0.2s;
     }
-    .map-link i {
-      font-size: 1.3rem;
+    .location-chip i {
+      font-size: 14px;
+      color: #b35f2b;
     }
 
-    /* QR code section */
-    .qr-section {
+    /* qr - subtle */
+    .qr-wrapper {
       background: #ffffff;
-      border-radius: 32px;
-      margin: 24px 0 16px 0;
-      padding: 16px;
-      text-align: center;
-      border: 1px solid #ecf3fa;
-    }
-    .qr-placeholder {
-      background: #fef9f0;
       border-radius: 24px;
+      margin: 24px 0 16px;
+      text-align: center;
       padding: 12px;
-      display: inline-block;
+      border: 1px solid #edf2f7;
     }
-    canvas {
-      width: 130px;
-      height: 130px;
-      display: block;
-      margin: 0 auto;
-      border-radius: 20px;
+    #qrcode-container {
+      display: flex;
+      justify-content: center;
     }
-    .qr-label {
-      font-size: 0.75rem;
-      color: #5e6f8d;
-      margin-top: 10px;
+    #qrcode-container img, #qrcode-container canvas {
+      width: 100px;
+      height: 100px;
+      border-radius: 16px;
+    }
+    .qr-caption {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 8px;
     }
 
-    /* FIXED IMPORT BUTTON (sticky bottom) */
-    .fixed-save-area {
+    /* fixed import button */
+    .fixed-footer {
       position: sticky;
       bottom: 0;
       width: 100%;
-      background: transparent;
-      padding: 0 0 20px 0;
-      z-index: 20;
+      padding: 0 0 16px 0;
       margin-top: -8px;
+      z-index: 10;
     }
-    .save-contact-btn {
-      background: #1e2a36;
-      backdrop-filter: blur(4px);
-      background: #1e2a36;
+    .import-btn {
+      background: #1f2e3a;
       border-radius: 60px;
-      padding: 16px 24px;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
-      width: 90%;
+      gap: 12px;
+      width: 88%;
       margin: 0 auto;
       border: none;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
       cursor: pointer;
-      transition: all 0.2s;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: white;
       font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: white;
+      box-shadow: 0 12px 25px -10px rgba(0,0,0,0.25);
+      transition: all 0.2s;
     }
-    .save-contact-btn i {
-      font-size: 1.5rem;
+    .import-btn i {
+      font-size: 16px;
     }
-    .save-contact-btn:hover {
-      background: #bc9a6c;
-      transform: scale(1.02);
-      color: #1e2a36;
+    .import-btn:hover {
+      background: #b8925c;
+      color: #1a2c3e;
+      transform: scale(1.01);
     }
 
-    /* responsive touches */
-    @media (max-width: 480px) {
-      .card-inner {
-        padding: 24px 20px 16px 20px;
-      }
-      .btn-icon {
-        min-width: 130px;
-        padding: 12px 8px;
-      }
-      .contact-item {
-        gap: 10px;
-      }
-    }
     hr {
-      margin: 18px 0;
-      border-color: #eef2f8;
+      margin: 16px 0;
+      border: none;
+      border-top: 1px solid #edf2f8;
     }
-    footer {
-      font-size: 0.7rem;
+
+    .footer-note {
       text-align: center;
+      font-size: 10px;
+      color: #9aa9bf;
       margin-top: 16px;
-      color: #8a99aa;
+      letter-spacing: 0.2px;
+    }
+
+    @media (max-width: 450px) {
+      .card-content {
+        padding: 22px 18px 16px;
+      }
+      .action-btn {
+        padding: 9px 8px;
+        font-size: 12px;
+      }
+      .contact-block {
+        padding: 14px 14px;
+      }
     }
   </style>
-  <!-- QR Code library (qrcodejs) -->
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-<div class="card-container">
-  <div class="card-scrollable">
-    <div class="card-inner">
+<div class="card-wrapper">
+  <div class="card-scroll">
+    <div class="card-content">
       
-      <!-- header with name, role, company -->
-      <div class="profile-badge">
-        <div class="avatar-icon">
-          <i class="fas fa-user-tie"></i>
-        </div>
-        <div class="name-title">
-          <h1>Amrellah T.</h1>
-          <div class="role">PLANT MANAGER</div>
-          <div class="company"><i class="fas fa-industry"></i> Twingulf Industries</div>
+      <!-- profile: name, title, company (clean spacing) -->
+      <div class="name-row">
+        <h1>Amrellah T.</h1>
+        <div class="title-badge">Plant Manager</div>
+        <div class="company-text">
+          <i class="fas fa-building"></i> Twingulf Industries
         </div>
       </div>
 
-      <!-- section 01: WhatsApp + Telegram direct buttons -->
-      <div class="section-title">
-        <i class="fab fa-whatsapp"></i> <span>Instant Connect</span>
+      <!-- 01 direct connect: WhatsApp & Telegram -->
+      <div class="section-header">
+        <i class="fab fa-whatsapp"></i> Connect instantly
       </div>
-      <div class="social-row">
-        <!-- WhatsApp button (click to message) -->
-        <a href="https://wa.me/25377481141?text=Hello%20Amrellah%2C%20I%20saw%20your%20digital%20card" target="_blank" class="btn-icon btn-wa">
-          <i class="fab fa-whatsapp"></i>
-          <span>WhatsApp · Chat now</span>
+      <div class="button-row">
+        <a href="https://wa.me/25377481141?text=Hello%20Amrellah%2C%20I%20saw%20your%20card" target="_blank" class="action-btn">
+          <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
-        <!-- Telegram button with username @Mramir_58 -->
-        <a href="https://t.me/Mramir_58" target="_blank" class="btn-icon btn-tg">
-          <i class="fab fa-telegram-plane"></i>
-          <span>Telegram · @Mramir_58</span>
+        <a href="https://t.me/Mramir_58" target="_blank" class="action-btn">
+          <i class="fab fa-telegram-plane"></i> Telegram
         </a>
       </div>
 
-      <!-- Location button (google maps) -->
-      <div class="social-row" style="margin-top: 4px;">
-        <a href="https://maps.app.goo.gl/bb3PMKVXuge5qbs39" target="_blank" class="btn-icon btn-location">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>📍 Location · Twingulf Ind., Djibouti</span>
+      <!-- location button (clean map) -->
+      <div style="margin: 6px 0 4px;">
+        <a href="https://maps.app.goo.gl/bb3PMKVXuge5qbs39" target="_blank" class="location-chip">
+          <i class="fas fa-map-pin"></i> Twingulf Industries, Djibouti City
         </a>
       </div>
 
-      <!-- 02 CONTACT section: phone, email, website -->
-      <div class="section-title">
-        <i class="fas fa-address-card"></i> <span>Contact</span>
+      <!-- 02 contact details (phones, emails, web) -->
+      <div class="section-header">
+        <i class="far fa-address-card"></i> Contact
       </div>
-      <div class="contact-grid">
-        <!-- PHONE: two numbers with click to call -->
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-          <div class="contact-details">
-            <a href="tel:+25377481141">+253 77 481 141</a>
-            <span class="small-label">(Primary)</span><br>
-            <a href="tel:+251923139300">+251 923 139 300</a>
-            <span class="small-label">(Secondary)</span>
+      <div class="contact-block">
+        <!-- phones -->
+        <div class="contact-line">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div class="contact-info">
+            <a href="tel:+25377481141">+253 77 481 141</a> <span class="contact-label">primary</span><br>
+            <a href="tel:+251923139300">+251 923 139 300</a> <span class="contact-label">secondary</span>
           </div>
         </div>
-        <!-- EMAIL: two emails -->
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-          <div class="contact-details">
+        <!-- emails -->
+        <div class="contact-line">
+          <div class="contact-icon"><i class="far fa-envelope"></i></div>
+          <div class="contact-info">
             <a href="mailto:amrallah.tawfik@twin-gulf.com">amrallah.tawfik@twin-gulf.com</a><br>
             <a href="mailto:amirtewfik1516@gmail.com">amirtewfik1516@gmail.com</a>
           </div>
         </div>
-        <!-- WEBSITE -->
-        <div class="contact-item">
+        <!-- website -->
+        <div class="contact-line">
           <div class="contact-icon"><i class="fas fa-globe"></i></div>
-          <div class="contact-details">
+          <div class="contact-info">
             <a href="https://www.twin-gulf.com" target="_blank">www.twin-gulf.com</a>
           </div>
         </div>
       </div>
 
-      <!-- Location textual + extra map hint (already button above but keep full address) -->
-      <div style="margin-top: 12px; margin-bottom: 6px;">
-        <i class="fas fa-building" style="color:#bc9a6c; margin-right: 8px;"></i> 
-        <strong>Twingulf Industries</strong> — Djibouti City, Djibouti
+      <!-- QR code area: smaller & clean -->
+      <div class="qr-wrapper">
+        <div id="qrcode-container"></div>
+        <div class="qr-caption">
+          <i class="fas fa-qrcode"></i> Scan to view digital card
+        </div>
       </div>
 
-      <!-- QR CODE Section: QR points to vCard / digital business card (portfolio or contact webpage) -->
-      <div class="qr-section">
-        <div class="qr-placeholder">
-          <div id="qrcode-container"></div>
-        </div>
-        <div class="qr-label">
-          <i class="fas fa-qrcode"></i> Scan to save contact / visit my card
-        </div>
-        <p style="font-size: 11px; margin-top: 8px; color:#64748b;">QR links to online vCard & contact details</p>
+      <div class="footer-note">
+        <i class="far fa-id-card"></i> digital business card
       </div>
-      
-      <footer>
-        <i class="far fa-id-card"></i> digital business card • 24/7 reachable
-      </footer>
-      <!-- spacer to give breathing room above fixed button -->
-      <div style="height: 24px;"></div>
-    </div> <!-- end card-inner -->
-  </div> <!-- end card-scrollable -->
+      <!-- extra space before sticky button -->
+      <div style="height: 20px;"></div>
+    </div>
+  </div>
 
-  <!-- FIXED SAVE CONTACT BUTTON (always visible at bottom, inside container, sticky) -->
-  <div class="fixed-save-area">
-    <button class="save-contact-btn" id="saveContactBtn">
+  <!-- fixed IMPORT button (sticky bottom) -->
+  <div class="fixed-footer">
+    <button class="import-btn" id="saveVcardBtn">
       <i class="fas fa-download"></i> IMPORT CONTACT (vCard)
-      <i class="fas fa-id-card"></i>
+      <i class="fas fa-arrow-down"></i>
     </button>
   </div>
 </div>
 
 <script>
   (function() {
-    // -------- 1. generate QR code that points to this same page (or a dynamic vCard link)
-    // For better experience, QR code will encode a URL to this live page (GitHub Pages).
-    // But we can also encode a vCard data URL. To keep it simple & useful: encode the current page URL.
-    // Since we are in development, we use the actual deployed URL or fallback.
-    let qrUrl = window.location.href;
-    // If the page is opened locally, use a placeholder but better to use a canonical card link
-    if (qrUrl === "" || qrUrl.indexOf("file://") === 0) {
-      // In case of local file, we still show a meaningful url (the future github pages)
-      qrUrl = "https://amrellah-t.digitalcard.com"; // user can replace with actual github.io later
+    // generate QR code pointing to current page / digital card
+    let qrTarget = window.location.href;
+    if (!qrTarget || qrTarget === "" || qrTarget.indexOf("file://") === 0) {
+      qrTarget = "https://amrellah-t.digitalcard.pro";
     }
-    // ensure we always have a url
-    const container = document.getElementById("qrcode-container");
-    if (container) {
-      // Clear any previous content
-      container.innerHTML = "";
-      new QRCode(container, {
-        text: qrUrl,
-        width: 130,
-        height: 130,
-        colorDark: "#1e2a36",
+    const qrContainer = document.getElementById("qrcode-container");
+    if (qrContainer) {
+      qrContainer.innerHTML = "";
+      new QRCode(qrContainer, {
+        text: qrTarget,
+        width: 100,
+        height: 100,
+        colorDark: "#1f2e3a",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.M
       });
     }
 
-    // -------- 2. Prepare vCard data (.vcf) based on all provided info
-    function generateVCard() {
-      // clean and format names
+    // create vCard file with all details
+    function buildVCard() {
+      const firstName = "Amrellah";
+      const lastName = "Tawfik";
       const fullName = "Amrellah T.";
-      const formattedName = "Amrellah Tawfik"; // display name
       const org = "Twingulf Industries";
       const title = "Plant Manager";
-      // phones
       const phone1 = "+25377481141";
       const phone2 = "+251923139300";
-      // emails
-      const email1 = "amrallah.tawfik@twin-gulf.com";
-      const email2 = "amirtewfik1516@gmail.com";
+      const emailWork = "amrallah.tawfik@twin-gulf.com";
+      const emailPersonal = "amirtewfik1516@gmail.com";
       const website = "https://www.twin-gulf.com";
-      // location (full address)
       const address = "Twingulf Industries, Djibouti City, Djibouti";
-      const mapUrl = "https://maps.app.goo.gl/bb3PMKVXuge5qbs39";
-      // telegram & whatsapp (informative)
-      const telegram = "https://t.me/Mramir_58";
-      const whatsapp = "https://wa.me/25377481141";
-      
-      // build vCard 4.0 / 3.0 (widely compatible)
-      let vcardData = "BEGIN:VCARD\r\n";
-      vcardData += "VERSION:3.0\r\n";
-      vcardData += `FN:${fullName}\r\n`;
-      vcardData += `N:Tawfik;Amrellah;;;\r\n`;
-      vcardData += `ORG:${org}\r\n`;
-      vcardData += `TITLE:${title}\r\n`;
-      // phone numbers
-      vcardData += `TEL;TYPE=WORK,VOICE:${phone1}\r\n`;
-      vcardData += `TEL;TYPE=CELL,VOICE:${phone2}\r\n`;
-      // emails
-      vcardData += `EMAIL;TYPE=WORK:${email1}\r\n`;
-      vcardData += `EMAIL;TYPE=HOME:${email2}\r\n`;
-      // website
-      vcardData += `URL;TYPE=WORK:${website}\r\n`;
-      // address
-      vcardData += `ADR;TYPE=WORK:;;${address};;;Djibouti\r\n`;
-      // optional notes with whatsapp & telegram & location link
-      vcardData += `NOTE:WhatsApp: ${whatsapp} | Telegram: ${telegram} | Location: ${mapUrl}\r\n`;
-      // photo is optional but we skip avatar to keep clean
-      vcardData += "REV:20260409T120000Z\r\n";
-      vcardData += "END:VCARD\r\n";
-      return vcardData;
+      const mapLink = "https://maps.app.goo.gl/bb3PMKVXuge5qbs39";
+      const whatsappLink = "https://wa.me/25377481141";
+      const telegramLink = "https://t.me/Mramir_58";
+
+      let vcard = "BEGIN:VCARD\r\n";
+      vcard += "VERSION:3.0\r\n";
+      vcard += `FN:${fullName}\r\n`;
+      vcard += `N:${lastName};${firstName};;;\r\n`;
+      vcard += `ORG:${org}\r\n`;
+      vcard += `TITLE:${title}\r\n`;
+      vcard += `TEL;TYPE=WORK,VOICE:${phone1}\r\n`;
+      vcard += `TEL;TYPE=CELL,VOICE:${phone2}\r\n`;
+      vcard += `EMAIL;TYPE=WORK:${emailWork}\r\n`;
+      vcard += `EMAIL;TYPE=HOME:${emailPersonal}\r\n`;
+      vcard += `URL;TYPE=WORK:${website}\r\n`;
+      vcard += `ADR;TYPE=WORK:;;${address};;;Djibouti\r\n`;
+      vcard += `NOTE:WhatsApp: ${whatsappLink} | Telegram: ${telegramLink} | Maps: ${mapLink}\r\n`;
+      vcard += "REV:20260409T100000Z\r\n";
+      vcard += "END:VCARD\r\n";
+      return vcard;
     }
 
-    // -------- 3. Download vCard when clicking fixed button
-    const saveBtn = document.getElementById("saveContactBtn");
+    // attach download event to fixed button
+    const saveBtn = document.getElementById("saveVcardBtn");
     if (saveBtn) {
-      saveBtn.addEventListener("click", function(e) {
-        const vcardString = generateVCard();
-        const blob = new Blob([vcardString], { type: "text/vcard;charset=utf-8" });
-        const link = document.createElement("a");
+      saveBtn.addEventListener("click", (e) => {
+        const vcardData = buildVCard();
+        const blob = new Blob([vcardData], { type: "text/vcard;charset=utf-8" });
         const url = URL.createObjectURL(blob);
-        link.href = url;
-        link.download = "Amrellah_T_contact.vcf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const downloadLink = document.createElement("a");
+        downloadLink.href = url;
+        downloadLink.download = "Amrellah_Twingulf.vcf";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
         URL.revokeObjectURL(url);
         
-        // optional visual feedback
-        const originalText = saveBtn.innerHTML;
-        saveBtn.innerHTML = '<i class="fas fa-check-circle"></i> Contact Saved! <i class="fas fa-smile-wink"></i>';
+        // feedback
+        const originalHtml = saveBtn.innerHTML;
+        saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved!';
         setTimeout(() => {
-          saveBtn.innerHTML = originalText;
-        }, 2000);
+          saveBtn.innerHTML = originalHtml;
+        }, 1800);
       });
     }
 
-    // optional: smooth handling for WhatsApp double number primary selection
-    // already used +25377481141 for wa.me and telegram link is correct
-    
-    // additional validation for Telegram: ensure correct username
-    // we added telegram link with @Mramir_58 
-    // (the template shows @Mramir_58)
-    // also ensure location button uses correct map link from user's description
-    const locationBtn = document.querySelector('.btn-location');
-    if (locationBtn && locationBtn.href !== "https://maps.app.goo.gl/bb3PMKVXuge5qbs39") {
-      // double-check map link exactly as given
-      locationBtn.setAttribute("href", "https://maps.app.goo.gl/bb3PMKVXuge5qbs39");
+    // ensure location button uses exact map link
+    const locationChip = document.querySelector('.location-chip');
+    if (locationChip && locationChip.getAttribute('href') !== "https://maps.app.goo.gl/bb3PMKVXuge5qbs39") {
+      locationChip.setAttribute("href", "https://maps.app.goo.gl/bb3PMKVXuge5qbs39");
     }
-    
-    // For whatsapp: make sure primary number is +25377481141 (already)
-    // and telegram direct message works with username
-    const tgBtn = document.querySelector('.btn-tg');
-    if (tgBtn && tgBtn.getAttribute('href') !== "https://t.me/Mramir_58") {
-      tgBtn.setAttribute("href", "https://t.me/Mramir_58");
+    // verify telegram link consistency
+    const tgAction = document.querySelector('.action-btn[href*="t.me"]');
+    if (tgAction && tgAction.getAttribute('href') !== "https://t.me/Mramir_58") {
+      tgAction.setAttribute("href", "https://t.me/Mramir_58");
     }
-    
-    // Ensure phone numbers click to dial includes proper formatting
-    // Additional tiny improvement: ensure both phone numbers show correct clickable links
-    // Already present in contact-grid but we can re-check the secondary href
-    const telLinks = document.querySelectorAll('.contact-details a[href^="tel:"]');
-    if (telLinks.length === 2) {
-      // fine
-    } else {
-      // manual fallback ensure second number
-    }
-    
-    // small extra: for mobile users, make sure the fixed button does not hide content
-    // use padding-bottom in scrollable to not hide last elements
-    const scrollDiv = document.querySelector('.card-scrollable');
-    if (scrollDiv) {
-      // ensure final content not overlapped: margin bottom inside inner gives room
+    // whatsapp number check
+    const waAction = document.querySelector('.action-btn[href*="wa.me"]');
+    if (waAction && waAction.getAttribute('href') !== "https://wa.me/25377481141?text=Hello%20Amrellah%2C%20I%20saw%20your%20card") {
+      waAction.setAttribute("href", "https://wa.me/25377481141?text=Hello%20Amrellah%2C%20I%20saw%20your%20card");
     }
   })();
 </script>
-
-<!-- additional fix to ensure QR Code library loaded properly, also manual fallback -->
-<noscript>JavaScript required for QR and vCard download</noscript>
 </body>
 </html>
