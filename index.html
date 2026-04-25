@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0d1b2e">
+<meta name="theme-color" content="#0E2515">
 <title>Amrellah T. — Twingulf Industries</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -14,14 +14,14 @@
 }
 
 :root {
-  --bg:      #0d1b2e;
-  --card:    #132038;
-  --card2:   #162540;
-  --cyan:    #00e5ff;
-  --cyan-dim: rgba(0,229,255,0.15);
+  --bg:      #0E2515;
+  --card:    #0b592F;
+  --card2:   #0d3d1e;
+  --cyan:    #228341;
+  --cyan-dim: rgba(34,131,65,0.15);
   --white:   #ffffff;
   --silver:  #8899aa;
-  --border:  rgba(0,229,255,0.18);
+  --border:  rgba(34,131,65,0.22);
 }
 
 *, *::before, *::after {
@@ -147,7 +147,7 @@ body {
 }
 
 @media(hover:hover){
-  .section-card:hover { border-color: rgba(0,229,255,0.35); }
+  .section-card:hover { border-color: rgba(34,131,65,0.35); }
 }
 
 .section-top {
@@ -227,7 +227,7 @@ body {
 .entry::before {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(0,229,255,0.06), transparent);
+  background: linear-gradient(90deg, rgba(34,131,65,0.06), transparent);
   opacity: 0; transition: opacity 0.2s;
   border-radius: inherit;
 }
@@ -285,7 +285,7 @@ body {
   transform: translateX(-50%);
   width: 100%; max-width: 420px;
   padding: 10px 16px 24px;
-  background: linear-gradient(to top, rgba(13,27,46,1) 55%, transparent 100%);
+  background: linear-gradient(to top, rgba(14,37,21,1) 55%, transparent 100%);
   z-index: 100;
   display: flex; justify-content: center;
 }
@@ -305,7 +305,7 @@ body {
   text-decoration: none; cursor: pointer;
   position: relative; overflow: hidden;
   transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
-  box-shadow: 0 0 20px rgba(0,229,255,0.12), 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 0 20px rgba(34,131,65,0.12), 0 8px 32px rgba(0,0,0,0.4);
 }
 
 /* shimmer sweep */
@@ -313,7 +313,7 @@ body {
   content: '';
   position: absolute; top: -50%; left: -80%;
   width: 50%; height: 200%;
-  background: linear-gradient(105deg, transparent, rgba(0,229,255,0.15), transparent);
+  background: linear-gradient(105deg, transparent, rgba(34,131,65,0.15), transparent);
   transform: skewX(-20deg);
   animation: sweep 5s ease-in-out infinite 2s;
 }
@@ -325,7 +325,7 @@ body {
     background: var(--cyan-dim);
     border-color: var(--cyan);
     transform: translateY(-2px);
-    box-shadow: 0 0 32px rgba(0,229,255,0.2), 0 12px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 0 32px rgba(34,131,65,0.2), 0 12px 40px rgba(0,0,0,0.4);
   }
 }
 
@@ -341,14 +341,14 @@ body {
 }
 .spin {
   width: 30px; height: 30px; border-radius: 50%;
-  border: 1px solid rgba(0,229,255,0.15);
+  border: 1px solid rgba(34,131,65,0.15);
   border-top-color: var(--cyan);
   animation: sp 1s linear infinite;
 }
 @keyframes sp { to{ transform: rotate(360deg); } }
 .spin-txt {
   font-size: 9px; letter-spacing: 3px;
-  text-transform: uppercase; color: rgba(0,229,255,0.3);
+  text-transform: uppercase; color: rgba(34,131,65,0.3);
 }
 </style>
 </head>
