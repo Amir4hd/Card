@@ -17,11 +17,11 @@
   --bg:      #0E2515;
   --card:    #0E2515;
   --card2:   #112b18;
-  --cyan:    #228341;
-  --cyan-dim: rgba(34,131,65,0.15);
+  --cyan:    #25D366;
+  --cyan-dim: rgba(37,211,102,0.15);
   --white:   #ffffff;
   --silver:  #8899aa;
-  --border:  rgba(34,131,65,0.22);
+  --border:  rgba(37,211,102,0.22);
 }
 
 *, *::before, *::after {
@@ -77,7 +77,6 @@ body {
   letter-spacing: 1px;
   line-height: 1.1;
   margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(34,131,65,0.9), 0 0 24px rgba(34,131,65,0.5), 0 0 48px rgba(34,131,65,0.25);
 }
 
 .hero-role {
@@ -148,7 +147,7 @@ body {
 }
 
 @media(hover:hover){
-  .section-card:hover { border-color: rgba(34,131,65,0.35); }
+  .section-card:hover { border-color: rgba(37,211,102,0.35); }
 }
 
 .section-top {
@@ -228,7 +227,7 @@ body {
 .entry::before {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(34,131,65,0.06), transparent);
+  background: linear-gradient(90deg, rgba(37,211,102,0.06), transparent);
   opacity: 0; transition: opacity 0.2s;
   border-radius: inherit;
 }
@@ -306,7 +305,7 @@ body {
   text-decoration: none; cursor: pointer;
   position: relative; overflow: hidden;
   transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
-  box-shadow: 0 0 20px rgba(34,131,65,0.12), 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 0 20px rgba(37,211,102,0.12), 0 8px 32px rgba(0,0,0,0.4);
 }
 
 /* shimmer sweep */
@@ -314,7 +313,7 @@ body {
   content: '';
   position: absolute; top: -50%; left: -80%;
   width: 50%; height: 200%;
-  background: linear-gradient(105deg, transparent, rgba(34,131,65,0.15), transparent);
+  background: linear-gradient(105deg, transparent, rgba(37,211,102,0.15), transparent);
   transform: skewX(-20deg);
   animation: sweep 5s ease-in-out infinite 2s;
 }
@@ -326,7 +325,7 @@ body {
     background: var(--cyan-dim);
     border-color: var(--cyan);
     transform: translateY(-2px);
-    box-shadow: 0 0 32px rgba(34,131,65,0.2), 0 12px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 0 32px rgba(37,211,102,0.2), 0 12px 40px rgba(0,0,0,0.4);
   }
 }
 
@@ -342,14 +341,14 @@ body {
 }
 .spin {
   width: 30px; height: 30px; border-radius: 50%;
-  border: 1px solid rgba(34,131,65,0.15);
+  border: 1px solid rgba(37,211,102,0.15);
   border-top-color: var(--cyan);
   animation: sp 1s linear infinite;
 }
 @keyframes sp { to{ transform: rotate(360deg); } }
 .spin-txt {
   font-size: 9px; letter-spacing: 3px;
-  text-transform: uppercase; color: rgba(34,131,65,0.3);
+  text-transform: uppercase; color: rgba(37,211,102,0.3);
 }
 </style>
 </head>
